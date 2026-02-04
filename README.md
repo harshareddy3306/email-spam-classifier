@@ -1,27 +1,20 @@
-# email-spam-classifier
-Python-based machine learning project to classify emails as spam or non-spam
-import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.metrics import accuracy_score
+# Email Spam Classification System
 
-data = pd.read_csv("sample_data.csv")
+This project is a Python-based machine learning application that classifies emails as spam or non-spam using supervised learning techniques.
 
-X = data["message"]
-y = data["label"]
+## Description
+The system processes raw email text, converts it into numerical features, trains a Naive Bayes classifier, and evaluates its accuracy. It demonstrates the complete workflow of a basic machine learning project.
 
-vectorizer = CountVectorizer()
-X_vec = vectorizer.fit_transform(X)
+## Technologies Used
+- Python
+- Pandas
+- Scikit-learn
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X_vec, y, test_size=0.2, random_state=42
-)
+## How to Run
+1. Install dependencies:
+   pip install -r requirements.txt
+2. Run the program:
+   python spam_classifier.py
 
-model = MultinomialNB()
-model.fit(X_train, y_train)
-
-predictions = model.predict(X_test)
-accuracy = accuracy_score(y_test, predictions)
-
-print(f"Model Accuracy: {accuracy * 100:.2f}%")
+## Use Case
+Helps understand email filtering logic and supervised learning fundamentals.
